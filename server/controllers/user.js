@@ -18,7 +18,8 @@ exports.register = async function (req, res) {
                 name,
                 email,
                 password,
-                roleId
+                roleId,
+                
             })
             .then(userData => res.status(201).send({
                 success: true,
