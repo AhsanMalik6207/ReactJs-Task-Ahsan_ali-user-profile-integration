@@ -4,11 +4,11 @@ import React from 'react';
 // import Manubar from './Manubar';
 
 const Logout = () => {
-    // localStorage.clear();
+    localStorage.clear();
 //     let Navigate = useNavigate();
 // <Navigate to="/user" />
     return(
-        <h1>welcome</h1>
+        <h1>You Successfully logout</h1>
     );    
 }
 

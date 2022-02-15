@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./home.css";
-import Rout from './Rout';
+
+// import Rout from './Rout';
 import img from "./images/blog.jpg";
 import blog from "./images/download.jpeg";
+import User from './User';
 import title from "./images/title.jpg";
+import {login} from "./Login";
+import { UserContext } from './UserContext';
 // import Manubar from './Manubar';
 // import Rout from './Rout';
 const Home = () => {
+  const {user, setUser} = useContext(UserContext);
     return <div>
       {/* <Rout /> */}
         <div className="header">
@@ -16,7 +21,13 @@ const Home = () => {
 <div className="row">
   <div className="leftcolumn">
     <div className="card">
-      <h2>Web Technology</h2>
+      <h2>Web Technology</h2><pre>{JSON.stringify(user, null, 2)}</pre>
+      {user ? (<button onClick={()=>{
+        // logout
+        setUser(null);
+      }}>logout</button>): (<button onClick={async ()=> {
+        const user= await login();
+        setUser(user)}}> login</button>)}
       <h5>Web technologies refers to the way computers/devices communicate. with each other using mark up languages. It invo It is communication. across the web, and create, deliver or manage web content using hypertext markup language (HTML).</h5>
       <div className="fakeimg" > <img src={img} alt="ahsan"/> </div>
       <p>Some text..</p>
@@ -44,7 +55,7 @@ const Home = () => {
     </div>
     <div className="card">
       <h3>Follow Me</h3>
-      <p>Some text..</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus amet omnis, labore maiores in dignissimos mollitia autem quas eveniet corporis fuga, qui veniam fugiat reprehenderit voluptatem</p>
     </div>
   </div>
 </div>

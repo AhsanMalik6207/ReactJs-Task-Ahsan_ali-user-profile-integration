@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
     "form-data": "^4.0.0",
+    "json": "^11.0.0",
+    "json-server": "^0.17.0",
     "materialize-css": "^1.0.0-rc.2",
     "npm-get-weather": "^1.0.14",
     "react": "^17.0.2",
@@ -32,7 +34,7 @@
       "react-app/jest"
     ]
   },
-  "proxy" : "https://localhost:8000",
+  "proxy": "",
   "browserslist": {
     "production": [
       ">0.2%",

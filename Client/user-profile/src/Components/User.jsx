@@ -33,7 +33,17 @@ const User = () => {
         setEmailNew(email);
         setFullPassword(password)
         let response= axios.post(`http://localhost:8000/user/1/register`,{name,email,password});
-       console.log(response);
+        
+        console.log(response);
+        // using fetch api
+        // if (name && email && password) {
+        //     // e.preventDefault();
+        //     fetch('http://localhost:9000/content',{
+        //         method:'POST',
+        //         headers:{'Content-type' : 'application/json'},
+        //         body:JSON.stringify({name,email,password})
+        //     })
+        //   }
     //    if(response === true){
     //    localStorage.setItem('login',JSON.stringify(name,email,password));}
 

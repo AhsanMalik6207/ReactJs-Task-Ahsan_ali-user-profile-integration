@@ -10,7 +10,7 @@ const Temp = () => {
   const getWeatherInfo = async () => {
     try {
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=855fc4f2e3224bca484cc6618b5fa76d`;
-
+// fetch api always return a response and then we change this response to json(an open standard file format)
       let res = await fetch(url);
       let data = await res.json();
 
@@ -52,6 +52,7 @@ const Temp = () => {
             id="search"
             className="searchTerm"
             value={searchValue}
+            // jo b user search box mai likhey ga ussko target krna
             onChange={(e) => setSearchValue(e.target.value)}
           />
 

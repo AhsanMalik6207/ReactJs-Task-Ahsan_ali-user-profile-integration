@@ -76,6 +76,7 @@ import {useParams} from "react-router-dom";
 
 const Userprofile =() => {
 let {name} = useParams();
+// let {id}= useParams();
 //only registered input will be included as submission data.register is a function to be used as a ref provided by the useForm hook
     let { register, handleSubmit } = useForm();
 //handleSubmit method which displays the data entered in the form to the console.
@@ -87,7 +88,7 @@ let {name} = useParams();
         form.append('bio' , data.bio);
         form.append('picture', data.picture[0]);
 
-        axios.put('/userprofile/37/update', form);
+        axios.post('http://localhost:8000/userprofile/47/create', form);
 
         console.log(data);
     //    axios.post('/signup', data)
@@ -95,10 +96,10 @@ let {name} = useParams();
     return <>
    <div className="main_div">
    <div className='box'>
-       <h1>Welcom {name}</h1>
+       <h3>Welcom {name}</h3>
    <form onSubmit={handleSubmit(onSubmission)} >
             <div className='form'>
-            <h2 id="heading">User profile</h2>
+            <h3 id="heading">User Profile</h3>
                         <input id="input" {...register('gender')}   placeholder='Gender' />
                    
                         <input id="input" {...register('phonenumber')}   placeholder='Phone Number' />
