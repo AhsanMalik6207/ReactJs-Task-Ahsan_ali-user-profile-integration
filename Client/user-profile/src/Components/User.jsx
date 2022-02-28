@@ -74,7 +74,7 @@ return(<>
     {/* In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself*/}
     <input id="input" type="text" placeholder="Enter your Name" onChange={inputEvent} value={name}/><br />
     <input id="input" type="text" placeholder="Enter your Email" onChange={inputEventTwo} value={email}/>
-    <input id="input" type="text" placeholder="Enter your Password" onChange={inputEventThree} value={password}/>
+    <input id="input" type="password" placeholder="Enter your Password" onChange={inputEventThree} value={password}/>
     <button id="btn1" type="submit" onClick={onSubmit}>Click Me :</button>
     {/* <a href="/userprofile" id="anc"> User-Profile</a> */}
     </div>

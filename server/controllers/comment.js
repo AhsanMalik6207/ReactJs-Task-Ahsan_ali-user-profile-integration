@@ -9,7 +9,14 @@ exports.getAll = async function (req, res) {
     return res.status(400).json({ status: 400, message: e.message });
   }
 };
-
+exports.getComments = async function(request, response){
+  try {
+      const comments = await Comment.findAll({where:{ postId: request.params.id  }});
+      response.status(200).json(comments);
+  } catch (error) {
+      response.status(500).json(error)
+  }
+}
 exports.create = async function (req, res) {
   try {
     const { commenttext} = req.body

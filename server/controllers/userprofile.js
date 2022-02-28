@@ -20,12 +20,12 @@ exports.create = async function (req, res) {
     const { gender, phonenumber, bio } = req.body;
     const { userId } = req.params;
     const userprofile = await Userprofile.findAll();
-    const checkuserprofile = userprofile.find(userprofile => userprofile.phonenumber === phonenumber)
-      if(checkuserprofile){
-        res.status(500).json({
-          message: "User profile already exists!",
-        });
-      }
+    // const checkuserprofile = userprofile.find(userprofile => userprofile.phonenumber === phonenumber)
+    //   if(checkuserprofile){
+    //     res.status(500).json({
+    //       message: "User profile already exists!",
+    //     });
+    //   }
     const user = await Userprofile.create({
       gender: gender,
       phonenumber: phonenumber,

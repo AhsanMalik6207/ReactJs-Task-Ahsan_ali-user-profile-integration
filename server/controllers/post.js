@@ -23,6 +23,15 @@ exports.getPost = async (request, response) => {
   }
 }
 
+exports.getPostbyCategory = async function (request, response) {
+  try {
+    const postbycategory = await Post.findAll({ where: { categoryId: request.params.id } });
+    response.status(200).json(postbycategory);
+  } catch (error) {
+    response.status(500).json(error)
+  }
+} 
+
 exports.getAll = async function (req, res) {
   try {
     Post.belongsTo(User, {
@@ -70,7 +79,9 @@ exports.create = async function (req, res) {
 
 exports.update = async function (req, res) {
   try {
-    const { title, description, picture } = req.body
+    // const {userId}=req.params;
+    const picture = req.file.path ;
+    const { title, description} = req.body
     return Post
       .findByPk(req.params.postId)
       .then((post) => {

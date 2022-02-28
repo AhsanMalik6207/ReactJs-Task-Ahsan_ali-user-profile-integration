@@ -1,21 +1,33 @@
-import React from 'react';
+import { Menu, MenuItem, MenuList } from '@mui/material';
+import React, {useState}from 'react';
 import { Link } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
-// import User from './User';
-//
 import './route.css'
- 
+import { dark } from '@material-ui/core/styles/createPalette';
 const Manubar = () => {
     let navigate = useNavigate();
+    const [anchorEl, setanchorEl] = useState(null);
+    const handleOpenMenu = e=>{
+        setanchorEl(e.currentTarget);
+    }
+    const handleMenuClose = ()=>{
+        setanchorEl(null);
+    }
    const Logout=()=>{
     localStorage.clear();
     navigate('./user');
    } 
-    return <div className='manu_style'>
-        
+    return(
+
+<div className='manu_style'>
+    
+      
  <Link activeClassName='activ_class' to="/home"> Home</Link> 
- <Link activeClassName='activ_class' to="/post"> Post</Link> 
- <Link activeClassName='activ_class' to="/home"> Category</Link>
+ <Link activeClassName='activ_class' to="/weather"> Weather</Link> 
+ <Link activeClassName='activ_class' to="/allposts"> Posts</Link> 
+ <Link activeClassName='activ_class' to="/createpost"> Create_Post</Link> 
+ <Link activeClassName='activ_class' to="/comments"> Comments</Link> 
+ <Link activeClassName='activ_class' to="/createcategory" onClick={handleOpenMenu} aria-controls='menu'> Category</Link>
  <Link activeClassName='activ_class' to="/home"> Contact Us</Link>
  {/* <Link activeClassName='activ_class' to= "/user">Login</Link> */}
     {
@@ -24,21 +36,14 @@ const Manubar = () => {
         <Link activeClassName='activ_class' to= "/user">Login</Link>
 
     }
-     
-
-        
-    {/* <Route exact path="/"> */}
-     
-      {/* loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />} </Route>
-        // <Link exact activeClassName='activ_class' to= "/user">Login</Link>?
-        // <Link exact activeClassName='active_class' to="/userprofile"> User-Profile </Link>:
-        // <Link exact activeClassName='activ_class' to= "/logout">Logout</Link> */}
-    
-    
-    {/* <Link exact activeClassName='active_class' to="/userprofile"> User-Profile </Link> */}
-
-    </div>;
+     <Menu style={{type:dark}} id='menu' onClose={handleMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
+         <MenuItem onClick={handleMenuClose} style={{color:'black'}}> <Link to="/allposts"> All posts</Link> </MenuItem>
+         <MenuList onClick={handleMenuClose}><Link to= "/programmingcategories"> Programming</Link></MenuList>
+         <MenuList onClick={handleMenuClose}><Link to= "/Educationcategories"> Education</Link></MenuList>
+         <MenuList onClick={handleMenuClose}><Link to= "/Musiccategories"> Music</Link></MenuList>
+     </Menu>
+    </div>
+    )
 }
-
 
 export default Manubar;
